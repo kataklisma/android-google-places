@@ -1,4 +1,4 @@
-package org.gmarz.googleplaces.models;
+package com.a2plab.googleplaces.models;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package org.gmarz.googleplaces.models;
+package com.a2plab.googleplaces.models;
 
 import java.util.ArrayList;
 

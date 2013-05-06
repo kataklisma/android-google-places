@@ -1,14 +1,18 @@
-package org.gmarz.googleplaces.query;
+package com.a2plab.googleplaces.query;
 
 import android.location.Location;
 
 public abstract class SearchQuery extends Query {
 
-	private StringBuilder mTypes = new StringBuilder();
+	public SearchQuery(String apiKey) {
+        super(apiKey);
+    }
+
+    private StringBuilder mTypes = new StringBuilder();
 	
 	public void setLocation(double latitude, double longitude) {
 		String location = Double.toString(latitude) + "," + Double.toString(longitude);
-		mQueryBuilder.addParameter("location", location);
+		queryFactory.addParameter("location", location);
 	}
 	
 	public void setLocation(Location location) {
@@ -16,11 +20,11 @@ public abstract class SearchQuery extends Query {
 	}
 	
 	public void setRadius(int radius) {
-		mQueryBuilder.addParameter("radius", Integer.toString(radius));
+		queryFactory.addParameter("radius", Integer.toString(radius));
 	}
 	
 	public void setKey(String key) {
-		mQueryBuilder.addParameter("key", key);
+		queryFactory.addParameter("key", key);
 	}
 	
 	public void addType(String type) {
@@ -31,7 +35,7 @@ public abstract class SearchQuery extends Query {
 	
 	@Override
 	public String toString() {
-		mQueryBuilder.addParameter("types", mTypes.toString());
-		return (getUrl() + mQueryBuilder.toString());
+		queryFactory.addParameter("types", mTypes.toString());
+		return (getUrl() + queryFactory.toString());
 	}
 }
