@@ -21,15 +21,7 @@ public abstract class Result {
     public static final String STATUS_CODE_UNKNOWN_ERROR = "UNKNOWN_ERROR";
 
     public StatusCode getStatusCode() {
-        return mStatusCode;
-    }
-
-    public String getStatusCodeValue() {
-        return status;
-    }
-
-    public boolean requestSucceeded() {
-        return (mStatusCode == StatusCode.OK || mStatusCode == StatusCode.ZeroResults);
+        return getStatusCodeFromValue(status);
     }
 
     protected StatusCode getStatusCodeFromValue(String statusCodeValue) {

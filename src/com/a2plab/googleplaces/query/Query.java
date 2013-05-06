@@ -6,7 +6,7 @@ import com.google.api.client.http.HttpRequest;
 
 public abstract class Query {
 
-	protected QueryFactory queryFactory = new QueryFactory();
+	protected QueryBuilder queryFactory = new QueryBuilder();
 	
 	public Query(String apiKey) {
 	    setKey(apiKey);
