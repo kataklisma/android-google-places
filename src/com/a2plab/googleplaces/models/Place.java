@@ -6,178 +6,185 @@ import com.google.api.client.util.Key;
 
 public class Place implements Serializable {
 
-    @Key
-    protected String id;
+	private static final long serialVersionUID = 1983125240283709545L;
 
-    @Key
-    protected String name;
+	@Key
+	protected String id;
 
-    @Key
-    protected String reference;
+	@Key
+	protected String name;
 
-    @Key
-    protected String icon;
+	@Key
+	protected String reference;
 
-    @Key
-    protected String vicinity;
+	@Key
+	protected String icon;
 
-    @Key
-    protected Geometry geometry;
+	@Key
+	protected String vicinity;
 
-    @Key
-    protected String formatted_address;
+	@Key
+	protected Geometry geometry;
 
-    @Key
-    protected String formatted_phone_number;
+	@Key
+	protected String formatted_address;
 
-    protected PlaceDetails details;
+	@Key
+	protected String formatted_phone_number;
 
-    public static class Geometry implements Serializable {
-        @Key
-        public Location location;
-    }
+	protected PlaceDetails details;
 
-    public static class Location implements Serializable {
-        @Key
-        public double lat;
+	public static class Geometry implements Serializable {
 
-        @Key
-        public double lng;
-    }
+		private static final long serialVersionUID = 1670272243139023026L;
+		@Key
+		public Location location;
+	}
 
-    /**
-     * @return the details
-     */
-    public PlaceDetails getDetails() {
-        return details;
-    }
+	public static class Location implements Serializable {
 
-    /**
-     * @param details
-     *            the details to set
-     */
-    public void setDetails(PlaceDetails details) {
-        this.details = details;
-    }
+		private static final long serialVersionUID = -1932110927792589446L;
 
-    /**
-     * @return the id
-     */
-    public String getId() {
-        return id;
-    }
+		@Key
+		public double lat;
 
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
+		@Key
+		public double lng;
+	}
 
-    /**
-     * @return the reference
-     */
-    public String getReference() {
-        return reference;
-    }
+	/**
+	 * @return the details
+	 */
+	public PlaceDetails getDetails() {
+		return details;
+	}
 
-    /**
-     * @return the icon
-     */
-    public String getIcon() {
-        return icon;
-    }
+	/**
+	 * @param details
+	 *            the details to set
+	 */
+	public void setDetails(PlaceDetails details) {
+		this.details = details;
+	}
 
-    /**
-     * @return the vicinity
-     */
-    public String getVicinity() {
-        return vicinity;
-    }
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * @return the geometry
-     */
-    public Geometry getGeometry() {
-        return geometry;
-    }
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * @return the formatted_address
-     */
-    public String getFormattedAddress() {
-        return formatted_address;
-    }
+	/**
+	 * @return the reference
+	 */
+	public String getReference() {
+		return reference;
+	}
 
-    /**
-     * @return the formatted_phone_number
-     */
-    public String getFormattedPhoneNumber() {
-        return formatted_phone_number;
-    }
+	/**
+	 * @return the icon
+	 */
+	public String getIcon() {
+		return icon;
+	}
 
-    /**
-     * @param id
-     *            the id to set
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
+	/**
+	 * @return the vicinity
+	 */
+	public String getVicinity() {
+		return vicinity;
+	}
 
-    /**
-     * @param name
-     *            the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
+	/**
+	 * @return the geometry
+	 */
+	public Geometry getGeometry() {
+		return geometry;
+	}
 
-    /**
-     * @param reference
-     *            the reference to set
-     */
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
+	/**
+	 * @return the formatted_address
+	 */
+	public String getFormattedAddress() {
+		return formatted_address;
+	}
 
-    /**
-     * @param icon
-     *            the icon to set
-     */
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
+	/**
+	 * @return the formatted_phone_number
+	 */
+	public String getFormattedPhoneNumber() {
+		return formatted_phone_number;
+	}
 
-    /**
-     * @param vicinity
-     *            the vicinity to set
-     */
-    public void setVicinity(String vicinity) {
-        this.vicinity = vicinity;
-    }
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    /**
-     * @param geometry
-     *            the geometry to set
-     */
-    public void setGeometry(Geometry geometry) {
-        this.geometry = geometry;
-    }
+	/**
+	 * @param name
+	 *            the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    /**
-     * @param formatted_address
-     *            the formatted_address to set
-     */
-    public void setFormattedAddress(String formatted_address) {
-        this.formatted_address = formatted_address;
-    }
+	/**
+	 * @param reference
+	 *            the reference to set
+	 */
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
 
-    /**
-     * @param formatted_phone_number
-     *            the formatted_phone_number to set
-     */
-    public void setFormattedPhoneNumber(String formatted_phone_number) {
-        this.formatted_phone_number = formatted_phone_number;
-    }
+	/**
+	 * @param icon
+	 *            the icon to set
+	 */
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
+	/**
+	 * @param vicinity
+	 *            the vicinity to set
+	 */
+	public void setVicinity(String vicinity) {
+		this.vicinity = vicinity;
+	}
+
+	/**
+	 * @param geometry
+	 *            the geometry to set
+	 */
+	public void setGeometry(Geometry geometry) {
+		this.geometry = geometry;
+	}
+
+	/**
+	 * @param formatted_address
+	 *            the formatted_address to set
+	 */
+	public void setFormattedAddress(String formatted_address) {
+		this.formatted_address = formatted_address;
+	}
+
+	/**
+	 * @param formatted_phone_number
+	 *            the formatted_phone_number to set
+	 */
+	public void setFormattedPhoneNumber(String formatted_phone_number) {
+		this.formatted_phone_number = formatted_phone_number;
+	}
 
 }

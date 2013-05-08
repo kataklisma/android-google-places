@@ -8,7 +8,7 @@ public class DetailsQuery extends Query {
     }
 
     public void setReference(String reference) {
-        queryFactory.addParameter("reference", reference);
+        queryBuilder.addParameter("reference", reference);
     }
 
     @Override

@@ -2,40 +2,81 @@ package com.a2plab.googleplaces.query;
 
 import android.location.Location;
 
+/**
+ * @author Giuseppe Mastroeni - aka: Kataklisma E-Mail: m.giuseppe@a2plab.com
+ * 
+ */
 public class NearbySearchQuery extends SearchQuery {
 
-    public enum Ranking {
-        Prominence, Distance
-    };
+	public enum Ranking {
+		Prominence, Distance
+	};
 
-    public NearbySearchQuery(String apiKey, Location location) {
-        this(apiKey, location.getLatitude(), location.getLongitude());
-    }
+	/**
+	 * @param apiKey
+	 * @param location
+	 */
+	public NearbySearchQuery(String apiKey, Location location) {
+		this(apiKey, location.getLatitude(), location.getLongitude());
+	}
 
-    public NearbySearchQuery(String apiKey, double lat, double lon) {
-        super(apiKey);
-        setLocation(lat, lon);
-        setRadius(2500);
-    }
+	/**
+	 * @param apiKey
+	 * @param lat
+	 * @param lon
+	 */
+	public NearbySearchQuery(String apiKey, double lat, double lon,boolean sensor) {
+		this(apiKey, lat, lon);
+		
+		
+	}
+	
+	/**
+	 * @param apiKey
+	 * @param lat
+	 * @param lon
+	 */
+	public NearbySearchQuery(String apiKey, double lat, double lon) {
+		super(apiKey);
+		setLocation(lat, lon);
+		setRadius(DEFAULT_RADIUS);
+	}
 
-    public void setRanking(Ranking ranking) {
-        queryFactory.addParameter("rankby", ranking.toString());
-    }
+	/**
+	 * @param ranking
+	 */
+	public void setRanking(Ranking ranking) {
+		queryBuilder.addParameter("rankby", ranking.toString());
+	}
 
-    public void setKeyword(String keyword) {
-        queryFactory.addParameter("keyword", keyword);
-    }
+	/**
+	 * @param keyword
+	 */
+	public void setKeyword(String keyword) {
+		queryBuilder.addParameter("keyword", keyword);
+	}
 
-    public void setName(String name) {
-        queryFactory.addParameter("name", name);
-    }
+	/**
+	 * @param name
+	 */
+	public void setName(String name) {
+		queryBuilder.addParameter("name", name);
+	}
 
-    public void setPageToken(String pageToken) {
-        queryFactory.addParameter("pagetoken", pageToken);
-    }
+	/**
+	 * @param pageToken
+	 */
+	public void setPageToken(String pageToken) {
+		queryBuilder.addParameter("pagetoken", pageToken);
+	}
 
-    @Override
-    public String getUrl() {
-        return "https://maps.googleapis.com/maps/api/place/nearbysearch/json?";
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.a2plab.googleplaces.query.Query#getUrl()
+	 */
+	@Override
+	public String getUrl() {
+		return "https://maps.googleapis.com/maps/api/place/nearbysearch/json?";
+	}
 }
