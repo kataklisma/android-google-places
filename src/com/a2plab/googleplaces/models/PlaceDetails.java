@@ -1,95 +1,19 @@
 package com.a2plab.googleplaces.models;
 
-import java.util.ArrayList;
+import com.a2plab.googleplaces.query.Query;
+import com.google.api.client.util.Key;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+public class PlaceDetails extends Place {
 
-import android.os.Parcel;
-import android.os.Parcelable;
+	@Key
+	protected String formatted_phone_number;
 
-public class PlaceDetails implements Parcelable {
-	
-	private String mPhoneNumber = "";
-	private String mWebsite = "";
-	private ArrayList<PlaceReview> mReviews = new ArrayList<PlaceReview>();
+	private static final long serialVersionUID = 8644547729432741509L;
 
-	private PlaceDetails(Parcel in) {
-		mPhoneNumber = in.readString();
-		mWebsite = in.readString();
-		in.readTypedList(mReviews, PlaceReview.CREATOR);
+	/**
+	 * @return the formatted_phone_number
+	 */
+	public String getFormattedPhoneNumber() {
+		return formatted_phone_number;
 	}
-
-	private PlaceDetails() {
-		// Do nothing.  For returning an empty object when a place has no details.
-	}
-	
-	public PlaceDetails(JSONObject jsonDetail) {
-		try {
-			mPhoneNumber = jsonDetail.getString("formatted_phone_number");
-			
-			if (jsonDetail.has("website")) {
-				mWebsite = jsonDetail.getString("website");
-			}
-
-			JSONArray jsonReviews = jsonDetail.getJSONArray("reviews");
-			
-			for(int i =0;i<jsonReviews.length();i++) {
-				PlaceReview review = new PlaceReview(jsonReviews.getJSONObject(i));
-				mReviews.add(review);
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public static PlaceDetails getEmpty() {
-		return new PlaceDetails();
-	}
-	
-	public String getPhoneNumber() {
-		return mPhoneNumber;
-	}
-	
-	public boolean phoneNumerIsValid() {
-		return mPhoneNumber.matches("^\\(?([0-9]{3})\\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$");
-	}
-
-	public String getWebsite() {
-		return mWebsite;
-	}
-	
-	public boolean websiteIsValid() {
-		return (mWebsite != "");
-	}
-	
-	public ArrayList<PlaceReview> getReviews() {
-		return mReviews;
-	}
-	
-	public boolean hasReviews() {
-		return (mReviews.size() > 0);
-	}
-	
-	public int describeContents() {
-		return 0;
-	}
-
-	public void writeToParcel(Parcel out, int flags) {
-		out.writeString(mPhoneNumber);
-		out.writeString(mWebsite);
-		out.writeTypedList(mReviews);
-	}
-	
-	public static final Parcelable.Creator<PlaceDetails> CREATOR = new Parcelable.Creator<PlaceDetails>() {
-
-		public PlaceDetails createFromParcel(Parcel in) {
-			return new PlaceDetails(in);
-		}
-
-		public PlaceDetails[] newArray(int size) {
-			return new PlaceDetails[size];
-		}
-	};
 }

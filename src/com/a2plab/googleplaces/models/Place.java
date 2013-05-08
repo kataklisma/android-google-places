@@ -32,11 +32,6 @@ public class Place implements Serializable {
 	@Key
 	protected String formatted_address;
 
-	@Key
-	protected String formatted_phone_number;
-
-	protected PlaceDetails details;
-
 	public static class Geometry implements Serializable {
 
 		private static final long serialVersionUID = 1670272243139023026L;
@@ -53,21 +48,6 @@ public class Place implements Serializable {
 
 		@Key
 		public double lng;
-	}
-
-	/**
-	 * @return the details
-	 */
-	public PlaceDetails getDetails() {
-		return details;
-	}
-
-	/**
-	 * @param details
-	 *            the details to set
-	 */
-	public void setDetails(PlaceDetails details) {
-		this.details = details;
 	}
 
 	/**
@@ -119,12 +99,6 @@ public class Place implements Serializable {
 		return formatted_address;
 	}
 
-	/**
-	 * @return the formatted_phone_number
-	 */
-	public String getFormattedPhoneNumber() {
-		return formatted_phone_number;
-	}
 
 	/**
 	 * @param id
@@ -180,14 +154,6 @@ public class Place implements Serializable {
 	 */
 	public void setFormattedAddress(String formatted_address) {
 		this.formatted_address = formatted_address;
-	}
-
-	/**
-	 * @param formatted_phone_number
-	 *            the formatted_phone_number to set
-	 */
-	public void setFormattedPhoneNumber(String formatted_phone_number) {
-		this.formatted_phone_number = formatted_phone_number;
 	}
 
 }

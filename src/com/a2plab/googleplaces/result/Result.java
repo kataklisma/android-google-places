@@ -1,4 +1,4 @@
-package com.a2plab.googleplaces.models;
+package com.a2plab.googleplaces.result;
 
 import com.google.api.client.util.Key;
 

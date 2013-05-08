@@ -9,11 +9,13 @@ import java.util.List;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 
-import com.a2plab.googleplaces.models.PlacesResult;
-import com.a2plab.googleplaces.models.Result;
+import com.a2plab.googleplaces.query.DetailsQuery;
 import com.a2plab.googleplaces.query.NearbySearchQuery;
 import com.a2plab.googleplaces.query.Query;
 import com.a2plab.googleplaces.query.TextSearchQuery;
+import com.a2plab.googleplaces.result.PlaceDetailsResult;
+import com.a2plab.googleplaces.result.PlacesResult;
+import com.a2plab.googleplaces.result.Result;
 
 public class GooglePlaces {
 
@@ -170,21 +172,27 @@ public class GooglePlaces {
 	/* DETAILS SEARCH */
 	/* ------------------------------------------------------ */
 
-	// public DetailsResult getPlaceDetails(String reference) throws
-	// JSONException, ClientProtocolException, IOException {
-	// DetailsQuery query = new DetailsQuery(reference);
-	// DetailsResult result = getPlaceDetails(query);
-	//
-	// return result;
-	// }
+	/**
+	 * @param reference
+	 * @return
+	 * @throws JSONException
+	 * @throws ClientProtocolException
+	 * @throws IOException
+	 */
+	public Result getPlaceDetails(String reference) throws IOException {
+		return getPlaces(new DetailsQuery(this.mApiKey, reference), PlaceDetailsResult.class);
+	}
 
-	// public DetailsResult getPlaceDetails(Query query) throws JSONException,
-	// ClientProtocolException, IOException {
-	// JSONObject response = executeRequest(query.toString());
-	// DetailsResult result = new DetailsResult(response);
-	//
-	// return result;
-	// }
+	/**
+	 * @param query
+	 * @return
+	 * @throws JSONException
+	 * @throws ClientProtocolException
+	 * @throws IOException
+	 */
+	public Result getPlaceDetails(Query query) throws  IOException {
+		return getPlaces(query, PlaceDetailsResult.class);
+	}
 
 	/* ------------------------------------------------------ */
 	/* GENERIC SEARCH */

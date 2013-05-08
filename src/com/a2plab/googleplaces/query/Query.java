@@ -13,6 +13,11 @@ public abstract class Query {
 		setKey(apiKey);
 		setSensor(true);
 	}
+	
+	public Query(String apiKey, boolean sensor) {
+		setKey(apiKey);
+		setSensor(sensor);
+	}
 
 	/**
 	 * @return
