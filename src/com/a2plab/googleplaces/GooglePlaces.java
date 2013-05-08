@@ -43,7 +43,8 @@ public class GooglePlaces {
 
 		if (types != null) {
 			for (String type : types) {
-				query.addType(type);
+				if (isSupportedPlace(type))
+					query.addType(type);
 			}
 		}
 
@@ -90,8 +91,23 @@ public class GooglePlaces {
 	 * @return
 	 * @throws IOException
 	 */
+	public Result getNearbyPlaces(double lat, double lon) throws IOException {
+		return getPlaces(new NearbySearchQuery(mApiKey, lat, lon));
+	}
+
+	/**
+	 * 
+	 * DEFAULT NEARBY
+	 * 
+	 * @param sensor
+	 * @param radius
+	 * @param lat
+	 * @param lon
+	 * @return
+	 * @throws IOException
+	 */
 	public Result getNearbyPlaces(int radius, double lat, double lon) throws IOException {
-		return getPlaces(new NearbySearchQuery(mApiKey, lat, lon, true));
+		return getPlaces(new NearbySearchQuery(mApiKey, lat, lon));
 	}
 
 	/**
@@ -106,7 +122,9 @@ public class GooglePlaces {
 	 * @throws IOException
 	 */
 	public Result getNearbyPlaces(int radius, double lat, double lon, boolean sensor) throws IOException {
-		return getPlaces(new NearbySearchQuery(mApiKey, lat, lon, sensor));
+		NearbySearchQuery query = new NearbySearchQuery(mApiKey, lat, lon);
+		query.setSensor(sensor);
+		return getPlaces(query);
 	}
 
 	/* ------------------------------------------------------ */

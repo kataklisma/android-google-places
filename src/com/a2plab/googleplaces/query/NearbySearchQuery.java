@@ -25,17 +25,6 @@ public class NearbySearchQuery extends SearchQuery {
 	 * @param lat
 	 * @param lon
 	 */
-	public NearbySearchQuery(String apiKey, double lat, double lon,boolean sensor) {
-		this(apiKey, lat, lon);
-		
-		
-	}
-	
-	/**
-	 * @param apiKey
-	 * @param lat
-	 * @param lon
-	 */
 	public NearbySearchQuery(String apiKey, double lat, double lon) {
 		super(apiKey);
 		setLocation(lat, lon);

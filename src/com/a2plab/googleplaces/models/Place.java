@@ -20,6 +20,9 @@ public class Place implements Serializable {
 	@Key
 	protected String icon;
 
+	/**
+	 * Use this for Nearby Search instead formatted_address
+	 */
 	@Key
 	protected String vicinity;
 
