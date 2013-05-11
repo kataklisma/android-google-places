@@ -18,8 +18,18 @@ public class DetailsQuery extends Query {
 	/**
 	 * @param reference
 	 */
-	public void setReference(String reference) {
+	public DetailsQuery setReference(String reference) {
 		queryBuilder.addParameter("reference", reference);
+		return this;
+	}
+
+	/**
+	 * @param value
+	 * @return
+	 */
+	public DetailsQuery setOpenNow(boolean value) {
+		queryBuilder.addParameter("opennow", Boolean.toString(value));
+		return this;
 	}
 
 	/**
@@ -27,15 +37,17 @@ public class DetailsQuery extends Query {
 	 * 
 	 * @param value
 	 */
-	protected void setExtensions(String value) {
+	protected DetailsQuery setExtensions(String value) {
 		queryBuilder.addParameter("extensions", value);
+		return this;
 	}
 
 	/**
      * 
      */
-	public void setExtensions() {
+	public DetailsQuery setExtensions() {
 		queryBuilder.addParameter("extensions", "review_summary");
+		return this;
 	}
 
 	/*

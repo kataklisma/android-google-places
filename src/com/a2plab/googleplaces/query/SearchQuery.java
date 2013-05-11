@@ -16,27 +16,36 @@ public abstract class SearchQuery extends Query {
 	 * @param latitude
 	 * @param longitude
 	 */
-	public void setLocation(double latitude, double longitude) {
+	public SearchQuery setLocation(double latitude, double longitude) {
 		String location = Double.toString(latitude) + "," + Double.toString(longitude);
 		queryBuilder.addParameter("location", location);
+		return this;
 	}
 
-	public void setOpenNow(boolean value) {
+	/**
+	 * @param value
+	 * @return
+	 */
+	public SearchQuery setOpenNow(boolean value) {
 		queryBuilder.addParameter("opennow", Boolean.toString(value));
+		return this;
 	}
 
 	/**
 	 * @param location
+	 * @return
 	 */
-	public void setLocation(Location location) {
+	public SearchQuery setLocation(Location location) {
 		setLocation(location.getLatitude(), location.getLongitude());
+		return this;
 	}
 
 	/**
 	 * @param radius
 	 */
-	public void setRadius(int radius) {
+	public SearchQuery setRadius(int radius) {
 		queryBuilder.addParameter("radius", Integer.toString(radius));
+		return this;
 	}
 
 	/**

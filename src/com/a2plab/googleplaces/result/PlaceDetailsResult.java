@@ -1,7 +1,5 @@
 package com.a2plab.googleplaces.result;
 
-import java.util.List;
-
 import com.a2plab.googleplaces.models.PlaceDetails;
 import com.google.api.client.util.Key;
 
@@ -13,7 +11,7 @@ public class PlaceDetailsResult extends Result {
 	/**
 	 * @return the results
 	 */
-	public PlaceDetails getResults() {
+	public PlaceDetails getResult() {
 		return result;
 	}
 

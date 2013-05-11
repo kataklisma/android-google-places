@@ -34,29 +34,33 @@ public class NearbySearchQuery extends SearchQuery {
 	/**
 	 * @param ranking
 	 */
-	public void setRanking(Ranking ranking) {
+	public NearbySearchQuery setRanking(Ranking ranking) {
 		queryBuilder.addParameter("rankby", ranking.toString());
+		return this;
 	}
 
 	/**
 	 * @param keyword
 	 */
-	public void setKeyword(String keyword) {
+	public NearbySearchQuery setKeyword(String keyword) {
 		queryBuilder.addParameter("keyword", keyword);
+		return this;
 	}
 
 	/**
 	 * @param name
 	 */
-	public void setName(String name) {
+	public NearbySearchQuery setName(String name) {
 		queryBuilder.addParameter("name", name);
+		return this;
 	}
 
 	/**
 	 * @param pageToken
 	 */
-	public void setPageToken(String pageToken) {
+	public NearbySearchQuery setPageToken(String pageToken) {
 		queryBuilder.addParameter("pagetoken", pageToken);
+		return this;
 	}
 
 	/*

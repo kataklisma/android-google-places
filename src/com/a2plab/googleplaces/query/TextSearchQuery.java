@@ -18,10 +18,12 @@ public class TextSearchQuery extends SearchQuery {
 	 * double)
 	 */
 	@Override
-	public void setLocation(double latitude, double longitude) {
+	public TextSearchQuery setLocation(double latitude, double longitude) {
 		super.setLocation(latitude, longitude);
-		if (queryBuilder.getParameter("radius") == null)
+		if (queryBuilder.getParameter("radius") == null) {
 			setRadius(DEFAULT_RADIUS);
+		}
+		return this;
 	}
 
 	/*
@@ -32,8 +34,8 @@ public class TextSearchQuery extends SearchQuery {
 	 * .Location)
 	 */
 	@Override
-	public void setLocation(Location location) {
-		this.setLocation(location.getLatitude(), location.getLongitude());
+	public TextSearchQuery setLocation(Location location) {
+		return this.setLocation(location.getLatitude(), location.getLongitude());
 	}
 
 	public void setQuery(String query) {

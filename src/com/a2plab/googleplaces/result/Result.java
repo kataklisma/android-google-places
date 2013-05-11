@@ -4,8 +4,6 @@ import com.google.api.client.util.Key;
 
 public abstract class Result {
 
-    private StatusCode mStatusCode;
-
     @Key
     private String status = "";
 
@@ -41,4 +39,5 @@ public abstract class Result {
             return StatusCode.NotSupported;
         }
     }
+    
 }

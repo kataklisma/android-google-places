@@ -27,22 +27,26 @@ public abstract class Query {
 	/**
 	 * @param apiKey
 	 */
-	private void setKey(String apiKey) {
+	private Query setKey(String apiKey) {
 		queryBuilder.addParameter("key", apiKey);
+		return this;
 	}
 
 	/**
 	 * @param sensor
+	 * @return 
 	 */
-	public void setSensor(boolean sensor) {
+	public Query setSensor(boolean sensor) {
 		queryBuilder.addParameter("sensor", Boolean.toString(sensor));
+		return this;
 	}
 
 	/**
 	 * @param language
 	 */
-	public void setLanguage(String language) {
+	public Query setLanguage(String language) {
 		queryBuilder.addParameter("language", language);
+		return this;
 	}
 
 	/**
