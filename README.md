@@ -1,4 +1,7 @@
-Android library that wraps the Google Places API.
+Wrapper Android for Google Places API
+
+Features
+========
 
 Setup
 =====
@@ -9,11 +12,11 @@ Setup
 
 Usage
 =====
-
-A few examples...
-
-Place Search
+Android Wrapper for Google Place API
 ------------
+
+Features
+=======
 
 Sending a search request
 
