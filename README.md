@@ -1,22 +1,27 @@
-Wrapper Android for Google Places API
+ # Android Wrapper for Google Places API
+This library allows you to integrate the capabilities of google places in your App.
+It uses the API provided by google for client to make an http request and parses the JSON to java objects easy to use (I hope).
+You can also extend the base classes that represent queries, and and that that provide results to add functionality and customized information.
 
-Features
-========
+## Features
 
-Setup
-=====
+- Integration and use of <a href="https://code.google.com/p/google-api-java-client/">Google APIs Client Library for Java</a>
+- Use of Generics Java
+- Nearby  Search Request
+- Text Search Request
+- Place Details request
+- Customized Request (based on previous)
 
-1) Obtain an API key.  Visit the <a href="https://developers.google.com/places/documentation/">developer's guide</a> for more information.
+## TODO
+- Radar Sarch
+- Place Photo
+- 
+## Setup
 
-2) Drop the googleplaces.jar in the lib folder of your Android project.
+1). Obtain an API key (Browser).  Visit the <a href="https://developers.google.com/places/documentation/">developer's guide</a> for more information.
+2). Drop the googleplaces.jar in the lib folder of your Android project.
 
-Usage
-=====
-Android Wrapper for Google Place API
-------------
-
-Features
-=======
+## Base Usage
 
 Sending a search request
 
