@@ -1,4 +1,5 @@
  # Android Wrapper for Google Places API
+
 This library allows you to integrate the capabilities of google places in your App.
 It uses the API provided by google for client to make an http request and parses the JSON to java objects easy to use (I hope).
 You can also extend the base classes that represent queries, and and that that provide results to add functionality and customized information.
@@ -12,16 +13,27 @@ You can also extend the base classes that represent queries, and and that that p
 - Place Details request
 - Customized Request (based on previous)
 
-## TODO
+## Todo
+
+any kind of help is welcome
+
+- Make better documentation :)
+- Public javadoc
+- Test Code 
 - Radar Sarch
 - Place Photo
-- 
+- Place Actions
+- Place Autocomplete
+- Query Autocomplete
+- Remove libs directory from repository
+
 ## Setup
 
-1). Obtain an API key (Browser).  Visit the <a href="https://developers.google.com/places/documentation/">developer's guide</a> for more information.
-2). Drop the googleplaces.jar in the lib folder of your Android project.
+1. Obtain an API key (Browser).  Visit the <a href="https://developers.google.com/places/documentation/">developer's guide</a> for more information.
+2. Drop the googleplaces.jar in the lib folder of your Android project.
+3. If necessary download or update the <a href="https://code.google.com/p/google-api-java-client/">google-api-java-client</a> ant put in yout libs directory all needed jar.
 
-## Base Usage
+# Base Usage
 
 Sending a search request
 
@@ -39,8 +51,11 @@ Handling a place search response
         List<Place> places = result.getPlaces();
     }
         
-Place Details
--------------
+## Text Search
+
+## Nearby Search
+
+## Place Details
 
 Sending a Place Details request
 
@@ -53,6 +68,10 @@ Handling a place details response
     if (detailsResult.getStatusCode() == StatusCode.OK) {
         PlaceDetails details = detailsResult.getDetails();
     }
+
+
+
+# Advanced Usage
 
 Contributing
 ============
