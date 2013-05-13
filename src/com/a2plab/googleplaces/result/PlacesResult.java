@@ -7,14 +7,17 @@ import com.google.api.client.util.Key;
 
 public class PlacesResult extends Result {
 
-    @Key
-    public List<Place> results;
+	@Key
+	public List<? extends Place> results;
 
-    /**
-     * @return the results
-     */
-    public List<Place> getResults() {
-        return results;
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.a2plab.googleplaces.result.Result#getResult()
+	 */
+	@Override
+	public List<? extends Place> getResults() {
+		return results;
+	}
 
 }
