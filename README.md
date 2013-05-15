@@ -1,4 +1,4 @@
-# Android Wrapper for Google Places API
+# Google Places API for Android
 
 This library allows you to integrate the capabilities of google places in your App.
 It uses the API provided by google for client to make an http request and parses the JSON to java objects easy to use (I hope).
@@ -21,6 +21,7 @@ thanks to <a href="https://github.com/gmarz">Gmarz</a> for having had the basic 
 
 Any kind of help is welcome.
 
+- Add License
 - Make better documentation :)
 - Public javadoc
 - Test Unit
