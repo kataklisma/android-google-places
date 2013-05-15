@@ -175,8 +175,74 @@ For Example, we need to set many parameters on Nearby Search Request:
 
 ## Custom Result
 
-The most important features of thislibrary are then you can use the result 
+Results of requests you can extend and create custom classes appropriate for your purposes.<br>
+As an example we can create a class called POI that represents a point on google maps, then add a field "Marker".<br>
+Another useful example would be to insert a field "distance" where we're going to save the distance from the origin point of the search (location).
 
+<pre><code>
+public class Poi extends Place {
+
+    private Marker marker;
+
+	public Poi() {
+		super();
+	}
+	
+	public Poi(Marker marker) {
+		this();
+		this.marker = marker;
+	}
+	
+	public void removeMarker() {
+		marker.remove();
+	}
+	
+	public Marker getMarker() {
+		return marker;
+	}
+	
+	public void setMarker(Marker marker) {
+		this.marker = marker;
+	}
+
+}    
+</code>
+</pre>
+
+Then Extend The abstract Class Result:
+
+<pre><code>
+class PoiResult extends Result {
+
+	@Key
+	private List<Poi> results;
+	
+	@Override
+	public List<Poi> getResults() {
+		return results;
+	}
+}
+    </code>
+</pre>
+    
+then take the results of passing the method the class definition that you created:
+
+    PoiResult poiResult = (PoiResult) gp.getPlaces(query, PoiResult.class);
+    if (result.getStatusCode() == StatusCode.OK)
+        List<Poi> placesList = result.getResults();        
+        ....
+        
+for example we add the marker on google maps and save its reference.
+
+    place.setMarker(mapFragment.getMap().addMarker(new MarkerOptions()
+        	.position(new LatLng(place.getLatitude(), place.getLongitude()))
+			.title(place.getName()).snippet(place.getFormattedAddress())
+			.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))));
+    
+do you want remove marker?
+    
+    poi.removeMarker();
+    
 # Contributing
 
 Fork, push, and send a pull request. Enjoy!
