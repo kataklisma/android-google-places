@@ -6,11 +6,11 @@ You can also extend the base classes that represent queries, and and that that p
 
 ## Features
 
-- Nearby  Search Request
+- Nearby Search Request
 - Text Search Request
 - Place Details request
 - Customized Request (based on previous)
-- Support for all fields of the results of json google places.
+- Support for all parameters of the query and results defined in json google places query and results.
 - Integration and use of <a href="https://code.google.com/p/google-api-java-client/">Google APIs Client Library for Java</a>
 - Use of Generics Java
 
@@ -128,11 +128,24 @@ For more information about Text Sarch Request you can see the <a href="https://d
 
 ## Place Details
 
-Coming very soon...
+The PlaceDetails Class extends the Place Clase and provide additional information such reviews, events, types and many others.
+To retrieve this information must first have made a request for a Place to get the <i>reference</i> field, then you can get the details of this place in this way:
+
+    String reference = place.getReference();
+    PlaceDetailsResult detailsResult =  gp.getPlaceDetails(reference);
+    
+Or you can create custom details query:
+
+    DetailsQuery dq = new DetailsQuery("YOUR API KEY", place.getReference());
+    PlaceDetailsResult detailsResult = (PlaceDetailsResult) gp.getPlaceDetails(dq);
 
 ### Handling a place details response
 
-Coming very soon...
+    if (detailsResult.getStatusCode() == StatusCode.OK) {
+        PlaceDetails placeDetails = detailsResult.getDetails();
+        //do something
+    }
+
 
 # Advanced Usage
 
