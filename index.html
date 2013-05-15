@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Android Google Places by kataklisma</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Android Google Places</h1>
+        <h2>Java library for Android for easy to use Google places API.</h2>
+        <a href="https://github.com/kataklisma/android-google-places" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>Android Wrapper for Google Places API</h1>
+
+<p>This library allows you to integrate the capabilities of google places in your App.
+It uses the API provided by google for client to make an http request and parses the JSON to java objects easy to use (I hope).
+You can also extend the base classes that represent queries, and and that that provide results to add functionality and customized information.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Nearby Search Request</li>
+<li>Text Search Request</li>
+<li>Place Details request</li>
+<li>Customized Request (based on previous)</li>
+<li>Support for all parameters of the query and results defined in json google places query and results.</li>
+<li>Integration and use of <a href="https://code.google.com/p/google-api-java-client/">Google APIs Client Library for Java</a>
+</li>
+<li>Use of Generics Java</li>
+</ul><h2>Todo</h2>
+
+<p>Any kind of help is welcome.</p>
+
+<ul>
+<li>Make better documentation :)</li>
+<li>Public javadoc</li>
+<li>Test Unit</li>
+<li>Support of Radar Search</li>
+<li>Support of Place Photo</li>
+<li>Support of Place Actions</li>
+<li>Support of Place Autocomplete</li>
+<li>Support of Query Autocomplete</li>
+<li>Remove libs directory from repository (?)</li>
+<li>Move the supported types in an appropriate container</li>
+<li>Demo app for try this library (is already made but is not ready for you)</li>
+</ul><h2>Setup</h2>
+
+<ol>
+<li>Obtain an API key (Browser).  Visit the <a href="https://developers.google.com/places/documentation/">developer's guide</a> for more information.</li>
+<li>Drop the googleplaces.jar in the lib folder of your Android project.</li>
+<li>If necessary download or update the <a href="https://code.google.com/p/google-api-java-client/">google-api-java-client</a> ant put in yout libs directory all needed jar.</li>
+</ol><h1>Base Usage</h1>
+
+<p>You first need to instantiate the base class library passing your Api Key.</p>
+
+<pre><code>GooglePlaces gp = new GooglePlaces(getResources().getString("YOUR API KEY");
+</code></pre>
+
+<p>So you have some of methods(for now) to make the request:</p>
+
+<blockquote>
+<ul>
+<li>getNearbyPlaces(List types, String text, int radius, double lat, double lon)</li>
+<li>getNearbyPlaces(List types, int radius, double lat , double lon)</li>
+<li>getNearbyPlaces(String type, String text, int radius, double lat, double lon)</li>
+<li>getNearbyPlaces(double lat, double lon)</li>
+<li>getNearbyPlaces(int radius, double lat, double lon)</li>
+<li>getNearbyPlaces(int radius, double lat, double lon, boolean sensor)</li>
+<li>getTextPlaces(String text, boolean sensor )</li>
+<li>getTextPlaces(String text)</li>
+<li>getPlaceDetails(String reference)</li>
+<li>getPlaceDetails(Query query)</li>
+<li>getPlaces(Query query)</li>
+<li>getPlaces(Query query, Class&lt;? extends Result&gt; resultClass)</li>
+</ul>
+</blockquote>
+
+<p>Each of these methods return a Class that implements the Result Interface.<br>
+For places will be the class PlaceResult and for the details will be the class PlaceDetails.<br>
+Waiting for the javadoc, you can see directly into sources such parameters are set by default by classes that extend the base class: Query.<br>
+You can access at all the optional parameters of the  API Google Places queries, and in the result are present all the fields provided by response.<br>
+Below you will see how to create a personalized result.</p>
+
+<h2>Nearby Search</h2>
+
+<p>You have many ways to do nearby search request depending on the query that you want to perform.
+If you do not specify any parameters required, the library does it for you by setting a default value.</p>
+
+<p>Some examples...</p>
+
+<p>Define types of places, radius and location:</p>
+
+<pre><code>List&lt;String&gt; types = new ArrayList&lt;String&gt;();
+types.add("food");
+types.add("restaurant");
+PlacesResult result = gp.getNearbyPlaces(types, 2000, 37.513692, 15.090934);
+</code></pre>
+
+<p>Define one type and a text to sarch:</p>
+
+<pre><code>PlacesResult result = gp.getNearbyPlaces("food","pizza", 2000, 37.513692, 15.090934);
+</code></pre>
+
+<p>Search Generic places near you location with default radius:</p>
+
+<pre><code>PlacesResult result = gp.getNearbyPlaces(37.513692, 15.090934);
+</code></pre>
+
+<p>Search Generic places near you location with custom radius:</p>
+
+<pre><code>PlacesResult result = gp.getNearbyPlaces(500, 37.513692, 15.090934);
+</code></pre>
+
+<p>For more information about NEarby Sarch Request you can see the <a href="https://developers.google.com/places/documentation/search#PlaceSearchRequests">Official Google Place Api Documentation for Nearby Search Request</a></p>
+
+<h2>Text Search</h2>
+
+<p>Some Examples...</p>
+
+<p>Base:</p>
+
+<pre><code>PlacesResult result = gp.getTextPlaces("restaurant");
+</code></pre>
+
+<p>With Sensor Disabeld:</p>
+
+<pre><code>PlacesResult result = gp.getTextPlaces("restaurant",false);
+</code></pre>
+
+<p>With Custom Location:</p>
+
+<pre><code>TextSearchQuery query = new TextSearchQuery(getResources().getString(R.string.browser_api_key), textToSearch, true);
+query.setLocation(37.513692, 15.090934);
+PlacesResult result = gp.getPlaces(query);
+</code></pre>
+
+<p>For more information about Text Sarch Request you can see the <a href="https://developers.google.com/places/documentation/search#TextSearchRequests">Official Google Place Api Documentation for Text Search Request</a></p>
+
+<h2>Supported Place Types</h2>
+
+<p>you can check whether the types that you want to look for are supported by the API of google invoking this method:</p>
+
+<pre><code>boolean isSupported = gp.isSupportedPlace("placetype");
+</code></pre>
+
+<h2>Handling a place search response</h2>
+
+<pre><code>if (result.getStatusCode() == StatusCode.OK) {
+    List&lt;Place&gt; placesList = result.getResults();
+    foreach(Place place : placesList){
+        //do something, for example add marker
+        mapFragment.getMap()
+            .addMarker(new MarkerOptions()
+                .position(new LatLng(place.getLatitude(), place.getLongitude()))
+                .title(place.getName())
+                .snippet(place.getFormattedAddress())
+            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
+    }
+}
+</code></pre>
+
+<h2>Place Details</h2>
+
+<p>The PlaceDetails Class extends the Place Clase and provide additional information such reviews, events, types and many others.
+To retrieve this information must first have made a request for a Place to get the <i>reference</i> field, then you can get the details of this place in this way:</p>
+
+<pre><code>String reference = place.getReference();
+PlaceDetailsResult detailsResult =  gp.getPlaceDetails(reference);
+</code></pre>
+
+<p>Or you can create custom details query:</p>
+
+<pre><code>DetailsQuery dq = new DetailsQuery("YOUR API KEY", place.getReference());
+PlaceDetailsResult detailsResult = (PlaceDetailsResult) gp.getPlaceDetails(dq);
+</code></pre>
+
+<h3>Handling a place details response</h3>
+
+<pre><code>if (detailsResult.getStatusCode() == StatusCode.OK) {
+    PlaceDetails placeDetails = detailsResult.getDetails();
+    //do something
+}
+</code></pre>
+
+<h1>Advanced Usage</h1>
+
+<p>You can create custom Query using the classes provided by library and setting the parameters, or you can extend them to add custom functionality.
+The most important things is that you can extend classes of the results.
+Let's see how</p>
+
+<h2>Custom Query Creation</h2>
+
+<p>For Example, we need to set many parameters on Nearby Search Request:</p>
+
+<pre><code>NearbySearchQuery query = new NearbySearchQuery("YOUR API KEY",37.513692, 15.090934);
+q.setRanking(NearbySearchQuery.Ranking.Distance);
+q.setLanguage("en");
+q.setKeyword("pizza");
+q.addType("food");
+q.addType("restaurant");
+q.setOpenNow(true);
+q.setPageToken(previousResult.getPageToken());
+
+PlaceResults result = gp.getPlaces(query);
+</code></pre>
+
+<h2>Custom Result</h2>
+
+<p>Results of requests you can extend and create custom classes appropriate for your purposes.<br>
+As an example we can create a class called POI that represents a point on google maps, then add a field "Marker".<br>
+Another useful example would be to insert a field "distance" where we're going to save the distance from the origin point of the search (location).</p>
+
+<pre><code>
+public class Poi extends Place {
+
+    private Marker marker;
+
+    public Poi() {
+        super();
+    }
+    
+    public Poi(Marker marker) {
+        this();
+        this.marker = marker;
+    }
+    
+    public void removeMarker() {
+        marker.remove();
+    }
+    
+    public Marker getMarker() {
+        return marker;
+    }
+    
+    public void setMarker(Marker marker) {
+        this.marker = marker;
+    }
+
+}    
+</code>
+</pre>
+
+<p>Then Extend The abstract Class Result:</p>
+
+<pre><code>
+class PoiResult extends Result {
+
+    @Key
+    private List results;
+    
+    @Override
+    public List getResults() {
+        return results;
+    }
+}
+    </code>
+</pre>
+    
+
+<p>then take the results of passing the method the class definition that you created:</p>
+
+<pre><code>PoiResult poiResult = (PoiResult) gp.getPlaces(query, PoiResult.class);
+if (result.getStatusCode() == StatusCode.OK)
+    List&lt;Poi&gt; placesList = result.getResults();        
+    ....
+</code></pre>
+
+<p>for example we add the marker on google maps and save its reference.</p>
+
+<pre><code>place.setMarker(mapFragment.getMap().addMarker(new MarkerOptions()
+        .position(new LatLng(place.getLatitude(), place.getLongitude()))
+        .title(place.getName()).snippet(place.getFormattedAddress())
+        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))));
+</code></pre>
+
+<p>do you want remove marker?</p>
+
+<pre><code>poi.removeMarker();
+</code></pre>
+
+<h1>Contributing</h1>
+
+<p>Fork, push, and send a pull request. Enjoy!</p>
+
+<p>Please Visit <a href="a2plab.com">a2plab.com</a></p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/kataklisma/android-google-places/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/kataklisma/android-google-places/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/kataklisma/android-google-places"></a> is maintained by <a href="https://github.com/kataklisma">kataklisma</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
