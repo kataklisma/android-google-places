@@ -63,7 +63,7 @@ Waiting for the javadoc, you can see directly into sources such parameters are s
 You can access at all the optional parameters of the  API Google Places queries, and in the result are present all the fields provided by response.<br>
 Below you will see how to create a personalized result.
 
-### Nearby Search
+## Nearby Search
 
 You have many ways to do nearby search request depending on the query that you want to perform.
 If you do not specify any parameters required, the library does it for you by setting a default value.
@@ -88,10 +88,10 @@ Search Generic places near you location with default radius:
 Search Generic places near you location with custom radius:
 
     PlacesResult result = gp.getNearbyPlaces(500, 37.513692, 15.090934);
+    
+For more information about NEarby Sarch Request you can see the <a href="https://developers.google.com/places/documentation/search#PlaceSearchRequests">Official Google Place Api Documentation for Nearby Search Request</a>
 
-For more information about Text Sarch Request you can see the <a href="https://developers.google.com/places/documentation/search#PlaceSearchRequests">Official Google Place Api Documentation for Nearby Search Request</a>
-
-### Text Search
+## Text Search
 
 Some Examples...
 
@@ -111,6 +111,12 @@ With Custom Location:
     
 For more information about Text Sarch Request you can see the <a href="https://developers.google.com/places/documentation/search#TextSearchRequests">Official Google Place Api Documentation for Text Search Request</a>
 
+## Supported Place Types
+    
+you can check whether the types that you want to look for are supported by the API of google invoking this method:
+
+    boolean isSupported = gp.isSupportedPlace("placetype");
+    
 ## Handling a place search response
 
     if (result.getStatusCode() == StatusCode.OK) {
@@ -146,18 +152,30 @@ Or you can create custom details query:
         //do something
     }
 
-
 # Advanced Usage
+ 
+You can create custom Query using the classes provided by library and setting the parameters, or you can extend them to add custom functionality.
+The most important things is that you can extend classes of the results.
+Let's see how
 
-Coming very soon...
+## Custom Query Creation
 
-## Custom Query
+For Example, we need to set many parameters on Nearby Search Request:
 
-Coming very soon...
+    NearbySearchQuery query = new NearbySearchQuery("YOUR API KEY",37.513692, 15.090934);
+    q.setRanking(NearbySearchQuery.Ranking.Distance);
+    q.setLanguage("en");
+    q.setKeyword("pizza");
+    q.addType("food");
+    q.addType("restaurant");
+    q.setOpenNow(true);
+    q.setPageToken(previousResult.getPageToken());
+    
+    PlaceResults result = gp.getPlaces(query);
 
 ## Custom Result
 
-Coming very soon...
+The most important features of thislibrary are then you can use the result 
 
 # Contributing
 
