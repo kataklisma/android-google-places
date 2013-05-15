@@ -3,6 +3,9 @@
 This library allows you to integrate the capabilities of google places in your App.
 It uses the API provided by google for client to make an http request and parses the JSON to java objects easy to use (I hope).
 You can also extend the base classes that represent queries, and and that that provide results to add functionality and customized information.
+Thanks to  for stating the project.
+thanks to <a href="https://github.com/gmarz">Gmarz</a> for having had the basic idea that the library is inspired.
+
 
 ## Features
 
@@ -245,6 +248,7 @@ do you want remove marker?
     
 # Contributing
 
+Thanks to <a href="https://github.com/gmarz">Gmarz</a> for having had the basic idea that the library is inspired.
 Fork, push, and send a pull request. Enjoy!
 
 Please Visit <a href="a2plab.com">a2plab.com</a>
