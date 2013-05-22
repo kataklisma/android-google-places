@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 import com.google.api.client.util.Key;
 
-public class Place implements Serializable {
+/**
+ * @author Giuseppe Mastroeni - aka: Kataklisma E-Mail: m.giuseppe@a2plab.com 
+ *
+ */
+public class Place implements GooglePlaceBase {
 
 	private static final long serialVersionUID = 1983125240283709545L;
 
@@ -31,6 +35,7 @@ public class Place implements Serializable {
 
 	@Key
 	protected String formatted_address;
+
 
 	public static class Geometry implements Serializable {
 
@@ -97,63 +102,6 @@ public class Place implements Serializable {
 	 */
 	public String getFormattedAddress() {
 		return formatted_address;
-	}
-
-
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	/**
-	 * @param name
-	 *            the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
-	 * @param reference
-	 *            the reference to set
-	 */
-	public void setReference(String reference) {
-		this.reference = reference;
-	}
-
-	/**
-	 * @param icon
-	 *            the icon to set
-	 */
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
-
-	/**
-	 * @param vicinity
-	 *            the vicinity to set
-	 */
-	public void setVicinity(String vicinity) {
-		this.vicinity = vicinity;
-	}
-
-	/**
-	 * @param geometry
-	 *            the geometry to set
-	 */
-	public void setGeometry(Geometry geometry) {
-		this.geometry = geometry;
-	}
-
-	/**
-	 * @param formatted_address
-	 *            the formatted_address to set
-	 */
-	public void setFormattedAddress(String formatted_address) {
-		this.formatted_address = formatted_address;
 	}
 
 }

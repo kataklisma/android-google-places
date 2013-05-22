@@ -2,7 +2,7 @@ package com.a2plab.googleplaces.result;
 
 import java.util.List;
 
-import com.a2plab.googleplaces.models.Place;
+import com.a2plab.googleplaces.models.GooglePlaceBase;
 import com.google.api.client.util.Key;
 
 /**
@@ -57,6 +57,6 @@ public abstract class Result {
 	/**
 	 * @return
 	 */
-	public abstract List<? extends Place> getResults();
+	public abstract List<? extends GooglePlaceBase> getResults();
 
 }
