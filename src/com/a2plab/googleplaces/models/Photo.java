@@ -27,7 +27,7 @@ public class Photo implements GooglePlaceBase {
     @Key
     private String photo_reference;
 
-    private class HtmlAttributions implements Serializable {
+    public class HtmlAttributions implements Serializable {
 
         private static final long serialVersionUID = 5071127066265551063L;
 
@@ -45,7 +45,7 @@ public class Photo implements GooglePlaceBase {
         return width;
     }
 
-    public String getPhoto_reference() {
+    public String getPhotoReference() {
         return photo_reference;
     }
 }

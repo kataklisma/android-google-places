@@ -200,11 +200,23 @@ public class GooglePlaces {
     /* PHOTO SEARCH */
     /* ------------------------------------------------------ */
 
+    /**
+     * @param photoreference
+     * @return
+     * @throws IOException
+     */
     public Result getPlacesPhoto(String photoreference) throws IOException {
         return sendRequest(new PhotoQuery(mApiKey, photoreference), PhotoResult.class);
 
     }
 
+    /**
+     * @param photoreference
+     * @param maxWidth
+     * @param maxHeight
+     * @return
+     * @throws IOException
+     */
     public Result getPlacesPhoto(String photoreference, int maxWidth, int maxHeight) throws IOException {
         PhotoQuery p = new PhotoQuery(mApiKey, photoreference);
         p.setMaxHeight(maxHeight).setMaxWidth(maxWidth);
